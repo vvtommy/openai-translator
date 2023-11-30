@@ -65,6 +65,7 @@ import { useLazyEffect } from '../usehooks'
 import LogoWithText, { type LogoWithTextRef } from './LogoWithText'
 import { useTranslatorStore, setEditableText, setOriginalText, setDetectedOriginalText } from '../store'
 import Toaster from './Toaster'
+import { PopupWidthMax } from '../chromium'
 
 const cache = new LRUCache({
     max: 500,
@@ -147,7 +148,7 @@ const useStyles = createUseStyles({
                   'alignItems': 'center',
                   'padding': '8px 16px',
                   'borderBottom': `1px solid ${props.theme.colors.borderTransparent}`,
-                  'minWidth': '612px',
+                  'minWidth': `${Math.min(612, Math.floor((PopupWidthMax) / window.devicePixelRatio) - 32)}px`,
                   '-ms-user-select': 'none',
                   '-webkit-user-select': 'none',
                   'user-select': 'none',
